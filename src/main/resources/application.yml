@@ -15,17 +15,32 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/auth/signup, /auth/login
+          filters:
+            - StripPrefix=1
 
         - id: users_public
-          uri: http://localhost:8082
+          uri: http://localhost:8081
           predicates:
             - Path=/users/**
             - Method=GET
 
         - id: users
-          uri: http://localhost:8082
+          uri: http://localhost:8081
           predicates:
             - Path=/users/**
+          filters:
+            - JwtTokenAuthenticationFilter
+
+        - id: maps_public
+          uri: http://localhost:8082
+          predicates:
+            - Path=/map/**
+            - Method=GET
+
+        - id: maps
+          uri: http://localhost:8082
+          predicates:
+            - Path=/map/**
           filters:
             - JwtTokenAuthenticationFilter
 
