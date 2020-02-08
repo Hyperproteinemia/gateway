@@ -7,9 +7,9 @@ spring:
     gateway:
       routes:
         - id: todos
-            uri: https://jsonplaceholder.typicode.com/todos/
-            predicates:
-              - Path=/todos/**
+          uri: https://jsonplaceholder.typicode.com/todos/
+          predicates:
+            - Path=/todos/**
 
         - id: auth
           uri: http://localhost:8081
