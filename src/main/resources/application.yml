@@ -14,7 +14,7 @@ spring:
         - id: auth
           uri: http://localhost:8081
           predicates:
-            - Path=/auth/signup, /auth/login
+            - Path=/auth/signup, /auth/login, /auth/self
           filters:
             - StripPrefix=1
 
