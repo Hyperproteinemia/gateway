@@ -29,13 +29,15 @@ spring:
         - id: users_public
           uri: http://localhost:8081
           predicates:
-            - Path=/users/**
+            - Path=/user/**
             - Method=GET
+          filters:
+            - UsernameProxyFilter
 
         - id: users
           uri: http://localhost:8081
           predicates:
-            - Path=/users/**
+            - Path=/user/**
           filters:
             - JwtTokenAuthenticationFilter
 
@@ -44,6 +46,8 @@ spring:
           predicates:
             - Path=/map/**
             - Method=GET
+          filters:
+            - UsernameProxyFilter
 
         - id: maps
           uri: http://localhost:8082
