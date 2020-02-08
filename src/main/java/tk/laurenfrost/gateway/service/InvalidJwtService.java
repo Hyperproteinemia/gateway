@@ -1,5 +1,6 @@
 package tk.laurenfrost.gateway.service;
 
+import org.springframework.context.annotation.Lazy;
 import tk.laurenfrost.gateway.config.JwtConfig;
 import tk.laurenfrost.gateway.entity.InvalidJwt;
 import tk.laurenfrost.gateway.repository.InvalidJwtRepository;
@@ -18,6 +19,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 @Service("invalidJwtService")
+@Lazy
 public class InvalidJwtService {
     private final InvalidJwtRepository invalidJwtRepository;
 
