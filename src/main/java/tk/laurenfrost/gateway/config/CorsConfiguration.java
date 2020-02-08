@@ -22,6 +22,12 @@ public class CorsConfiguration {
   private static final String ALLOWED_ORIGIN = "http://localhost:4200";
   private static final String MAX_AGE = "3600";
 
+
+  @Bean
+  public JwtConfig jwtConfig() {
+    return new JwtConfig();
+  }
+
   @Bean
   public WebFilter corsFilter() {
     return (ServerWebExchange ctx, WebFilterChain chain) -> {

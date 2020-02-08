@@ -88,10 +88,4 @@ public class JwtTokenAuthenticationFilter extends AbstractGatewayFilterFactory<J
     public static class Config {
         //Put the configuration properties for your filter here
     }
-
-
-    @Bean
-    public JwtConfig jwtConfig() {
-        return new JwtConfig();
-    }
 }
