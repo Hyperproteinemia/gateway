@@ -56,10 +56,20 @@ spring:
           filters:
             - JwtTokenAuthenticationFilter
 
-        - id: websocket_route
-          uri: ws://localhost:8081
+        - id: qa_public
+          uri: http://localhost:8083
           predicates:
-            - Path=/ws/**
+            - Path=/qa/**
+            - Method=GET
+          filters:
+            - UsernameProxyFilter
+
+        - id: qa
+          uri: http://localhost:8083
+          predicates:
+            - Path=/qa/**
+          filters:
+            - JwtTokenAuthenticationFilter
 
   data:
     mongodb:
