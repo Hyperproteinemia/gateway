@@ -1,0 +1,46 @@
+server:
+  port: 8080
+spring:
+  application:
+    name: gateway
+  cloud:
+    gateway:
+      routes:
+        - id: todos
+            uri: https://jsonplaceholder.typicode.com/todos/
+            predicates:
+              - Path=/todos/**
+
+        - id: auth
+          uri: http://localhost:8081
+          predicates:
+            - Path=/auth/signup, /auth/login
+
+        - id: users_public
+          uri: http://localhost:8082
+          predicates:
+            - Path=/users/**
+            - Method=GET
+
+        - id: users
+          uri: http://localhost:8082
+          predicates:
+            - Path=/users/**
+          filters:
+            - JwtTokenAuthenticationFilter
+
+        - id: websocket_route
+          uri: ws://localhost:8081
+          predicates:
+            - Path=/ws/**
+
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: gateway
+
+security:
+  jwt:
+    public-key-path: public.cert
+
