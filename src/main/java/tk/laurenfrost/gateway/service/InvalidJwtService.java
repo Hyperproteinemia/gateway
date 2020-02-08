@@ -19,6 +19,7 @@ import java.security.spec.X509EncodedKeySpec;
 import java.util.Base64;
 
 @Service("invalidJwtService")
+@Lazy
 public class InvalidJwtService {
     private final InvalidJwtRepository invalidJwtRepository;
 
